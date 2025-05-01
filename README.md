@@ -10,7 +10,7 @@ This repository contains instructions to setup and reproduce the access violatio
 - Delphi 12.
 - MSSQL server
 
-An access violation is raised when having a master <-> detail relationship setup with  server side filtering and when using  datascroll event on master.
+An access violation is raised when having a master <-> detail relationship setup with  server side filtering and when using datascroll event on detail.
 
 |MASTER.ID     | DETAIL.ID | DETAIL.MASTERID |
 |--------------|-----------|-----------------|  
@@ -26,17 +26,17 @@ An access violation is raised when having a master <-> detail relationship setup
      - Open the file 'FillDataBase.sql'
      - run the query
      - check the database contains the tables:
-        - SUBJECT (this is the master table)
-        - EXAMSESSION (this is the details table)
+        - MASTER (this is the master table)
+        - DETAIL (this is the details table)
 3. Application: this contains the code to reproduce.
    - From within delphi open the file 'CrashMe.dproj'
    - Run the project.
 
-1. Start with master.Id=1\
-2. Go to SUBJECT.Id=2.\
-3. Move the EXAMSESSION to the last record.\
-4. Go to SUBJECT.Id=1\
---> Access violation when accessing the detail field in the SUBJECTS.onDataScroll event (since this SUBJECT.id=1 has only one detail record, it gives an access violation during the scroll when accessing a EXAMSESSION field).\
+0. Press the 'Connect' button (observe the both dbgrids are filled)
+1. Select  master.Id=2\
+2. Press the 'Last' button (observe in detail dbgrid the cursor moves to DETAIL.Id=3)
+3. Select master.Id=1\
+--> Access violation when accessing the detail field in the details.AfterScroll coupled method 'onqrDetailsAfterscroll'  (since this SUBJECT.id=1 has only one detail record, and the previous master had 2 detail records with the record pointer at the last record, it gives an access violation during the scroll when accessing a DETAIL field).\
 !!Note if the SUBJECT.id=1 had 2 detail records, everything works as expected).
 
 
