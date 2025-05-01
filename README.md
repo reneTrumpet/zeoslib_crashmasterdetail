@@ -22,7 +22,16 @@ An access violation is raised when having a master <-> detail relationship setup
 
 1. From within the  DatabaseScripts folder (which contains the script to fill the database)
    - from within SSMS:
-     - Create a new database called 'ZEOSAV' with user='zeosuser' and password='zeosuser'
+     - Create a new database called 'ZEOSAV'
+     - Setup a new Login with loginname='zeosuser'
+       - setup for sql authentication
+          - set password='zeosuser'
+          - uncheck the 'enforce password policy'
+     - Got to User Mapping
+         - Check the 'Map' for Database 'ZEOSAV' and be sure that this line is highlighed.
+         - Now set the database role membership for zeosav
+           - check the db_owner
+           - press OK.
      - open the FillDataBase.sql file
      - run the query
      - check the database contains the tables:
