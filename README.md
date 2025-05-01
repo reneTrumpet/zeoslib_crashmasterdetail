@@ -30,7 +30,7 @@ An access violation is raised when having a master <-> detail relationship setup
         - DETAIL (this is the details table)
 3. Application: this contains the code to reproduce.
    - From within delphi open the file 'CrashMe.dproj'
-   - Run the project.
+   - Build and debug the project.
 
 0. Press the 'Connect' button (observe the both dbgrids are filled)
 1. Select  master.Id=2\
