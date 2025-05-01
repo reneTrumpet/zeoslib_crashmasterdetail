@@ -10,7 +10,10 @@ This repository contains instructions to setup and reproduce the access violatio
 - Delphi 12.
 - MSSQL server
 
-An access violation is raised when having a master <-> detail relationship setup with  server side filtering and when using datascroll event on detail.
+An access violation is raised when having a master <-> detail relationship setup with __server side filtering__ and when using datascroll event on detail dataset.\
+!!Note: when the application is setup for client side filtering, it works as expected.
+
+The database will be setup as shown in below table.
 
 |MASTER.ID     | DETAIL.ID | DETAIL.MASTERID |
 |--------------|-----------|-----------------|  
