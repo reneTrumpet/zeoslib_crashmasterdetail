@@ -44,5 +44,5 @@ The database will be setup as shown in below table.
 
 
 # Workarround:
-using the datachange (instead of the datascroll event).
+In the mean time our workarround was the use of a datasoursc.onDataChanged event instead of the dataset.afterscroll event for the detail table.
 
